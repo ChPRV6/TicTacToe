@@ -31,6 +31,7 @@ def checkWin(xState, zState):
         if (sumi( zState[win[0]], zState[win[1]], zState[win[2]]) == 3):
             print("O Won the match")
             return 0
+    print('Match Tie')
     return -1
 
 
