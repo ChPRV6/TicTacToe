@@ -31,7 +31,6 @@ def checkWin(xState, zState):
         if (sumi( zState[win[0]], zState[win[1]], zState[win[2]]) == 3):
             print("O Won the match")
             return 0
-    print('Match Tie')
     return -1
 
 
@@ -40,18 +39,24 @@ if __name__ == "__main__":
     zState = [0, 0, 0, 0, 0, 0, 0, 0, 0]
     turn = 1  # 1 for X and 0 for O
     print_hi('.')
+    c=0
     while True:
         printBoard(xState, zState)
         if turn == 1:
             print("X's Chance")
+            c+=1
             value = int(input("Please enter a value: "))
             xState[value] = 1
         else:
             print("O's Chance")
+            c+=1
             value = int(input("Please enter a value: "))
             zState[value] = 1
         cwin = checkWin(xState, zState)
-        if cwin != -1:
+        if (cwin ==-1) and (c==9):
+            print('Match Tied')
+            break
+        elif cwin != -1:
             print("Match over")
             break
         turn = 1 - turn
